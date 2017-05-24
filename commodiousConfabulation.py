@@ -31,5 +31,5 @@ if(argv[1][-4:] == ".txt"):
 		f.write(commodiousConfabulation(sentence))
 else:
 	sentence = argv[1]
-	commodiousConfabulation(sentence)
+	print commodiousConfabulation(sentence)
 
