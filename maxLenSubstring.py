@@ -1,4 +1,4 @@
-import sys.argv
+#returns the longest substring where there are less than size different characters
 def maxLenSubstring(string, size):
 	best = 0
 	current = {}
@@ -26,5 +26,6 @@ def maxLenSubstring(string, size):
 				current[string[i]] = 1
 	return best
 
+#a test case
 print maxLenSubstring("A man a plan a canal, panama!", 6)
 		
