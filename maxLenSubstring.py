@@ -6,26 +6,29 @@ def maxLenSubstring(string, size):
 	for i in range(len(string)):
 		if string[i] in current:
 			running += string[i]
-			current[string[i]] = i
+			current[string[i]] += 1
 			if len(running) > best:
 				best = len(running)
 		else:
 			if len(current) < size:
-				current[string[i]] = i
-				running += string[i]
-				if len(running) > best:
-					best = len(running)
+					current[string[i]] = 1
+					running += string[i]
+					if len(running) > best:
+						best = len(running)
 			else:
 				if len(running) > best:
 					best = len(running)
-				first = current[running[0]]
-				for j in current.keys():
-					if current[j] <= first:
-						del current[j]
-				running = running[first+1:] +  string[i]
+
 				current[string[i]] = 1
+				running += string[i]
+				while len(current) > size:
+					first = running[0]
+					running = running[1:]
+					current[first] -= 1
+					if current[first] == 0:
+						del current[first]
 	return best
 
 #a test case
-print maxLenSubstring("A man a plan a canal, panama!", 6)
+print maxLenSubstring("a man a plan a canal panama", 6)
 		
